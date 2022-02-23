@@ -39,13 +39,13 @@ def simple_work_calc(n, a, b):
 
 def test_simple_work():
 	""" done. """
-	assert round(simple_work_calc(10, 2, 2)) == 33 #TODO
-	assert round(simple_work_calc(20, 3, 2)) == 191 #TODO
-	assert round(simple_work_calc(30, 4, 2)) == 870 #TODO
-	assert round(simple_work_calc(8, 3, 2)) == 38 #Add 1
-	assert round(simple_work_calc(4, 2, 2)) == 8 #Add 2
-	assert round(simple_work_calc(1, 4, 2)) == 1 #Add 3
-	assert round(simple_work_calc(9, 2, 3)) == 15 #Add 4
+	assert simple_work_calc(10, 2, 2) == 33 #TODO
+	assert simple_work_calc(20, 3, 2) == 191 #TODO
+	assert simple_work_calc(30, 4, 2) == 870 #TODO
+	assert simple_work_calc(8, 3, 2) == 38 #Add 1
+	assert simple_work_calc(4, 2, 2) == 8 #Add 2
+	assert simple_work_calc(1, 4, 2) == 1 #Add 3
+	assert simple_work_calc(9, 2, 3) == 15 #Add 4
 
 def work_calc(n, a, b, f):
 	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
@@ -62,16 +62,10 @@ def work_calc(n, a, b, f):
 	# TODO
 	if n == 1:
 		return 1
-	
-	if a == b:
-		totalWork = f(n)*math.log(n,b)
-	elif a > b:
-		totalWork = f(n)*(((a/b)**(math.log(n,b))-1)/((a/b)-1)) 
+	elif n == 0:
+		return 0
 	else:
-		totalWork = f(n)*((1-((a/b)**(math.log(n,b))))/(1-(a/b)))
-	
-	return totalWork 
-	pass
+		return a*work_calc(n//b, a, b, f) + f(n)
 
 def span_calc(n, a, b, f):
 	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
@@ -86,7 +80,7 @@ def span_calc(n, a, b, f):
 	Returns: the value of W(n).
 	"""
 	# TODO
-	pass
+	
 
 def test_work():
 	""" done. """
