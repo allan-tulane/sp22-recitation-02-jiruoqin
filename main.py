@@ -60,6 +60,17 @@ def work_calc(n, a, b, f):
 	Returns: the value of W(n).
 	"""
 	# TODO
+	if n == 1:
+		return 1
+	
+	if a == b:
+		totalWork = f(n)*math.log(n,b)
+	elif a > b:
+		totalWork = f(n)*(((a/b)**(math.log(n,b))-1)/((a/b)-1)) 
+	else:
+		totalWork = f(n)*((1-((a/b)**(math.log(n,b))))/(1-(a/b)))
+	
+	return totalWork 
 	pass
 
 def span_calc(n, a, b, f):
@@ -121,4 +132,5 @@ def test_compare_work():
 	print(res)
 
 def test_compare_span():
+	return 0
 	# TODO
